@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pischa | Import, shop and learn</title>
+<meta name="description" content="Pischa imports products for Nigerians, sells ready-to-ship items, and teaches importation step by step.">
+<meta property="og:title" content="Pischa | Import, shop and learn">
+<meta property="og:description" content="Order from abroad, shop what's in stock, or learn how to import yourself.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='5' y='5' width='22' height='22' rx='8' fill='%23090909'/><circle cx='25' cy='25' r='6' fill='%23f0a4d5'/></svg>">
+<style>
+:root{--paper:#f1f0ee;--ink:#090909}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+:focus-visible{outline:3px solid #5e7fdd;outline-offset:3px}
+.nav{height:84px;display:flex;align-items:center;justify-content:center}
+.brand{display:flex;align-items:center;gap:9px;font-size:22px;font-weight:bold;letter-spacing:-.7px;text-decoration:none;color:inherit}
+.mark{width:22px;height:22px;background:#080808;border-radius:8px;position:relative;display:inline-block}
+.mark:after{content:"";position:absolute;width:11px;height:11px;right:-4px;bottom:-2px;background:#f0a0d3;border:2px solid var(--paper);border-radius:50%}
+.hero{min-height:calc(100svh - 84px);display:flex;flex-direction:column;text-align:center;padding-top:28px;overflow:hidden}
+.copy{padding:0 16px}
+h1{font-size:clamp(44px,6vw,82px);line-height:1.02;letter-spacing:-3px;font-weight:400;margin:0 auto 34px;max-width:900px}
+h1 span{display:block}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{border:1px solid #dfdddb;border-radius:999px;padding:17px 31px;font:bold 15px system-ui,sans-serif;background:#fff;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #0001}
+.btn.dark{background:#000;color:#fff;border-color:#000}
+
+/* Showcase: flush cards, tallest in the middle, bleeding off both edges */
+.showcase{margin-top:auto;padding-top:48px;height:clamp(320px,50vh,470px);display:flex;align-items:flex-end;justify-content:center}
+.card{position:relative;flex:none;width:var(--w);height:var(--h);margin-inline:-4px;border-radius:26px 26px 0 0;overflow:hidden;background:var(--bg);text-decoration:none;color:#000;isolation:isolate;z-index:var(--z,1);transition:transform .35s}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .6s}
+.card:hover{transform:translateY(-8px)}
+.card:hover img{transform:scale(1.05)}
+.card span{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:999px;padding:7px 13px;font:600 13px system-ui,sans-serif}
+.card:nth-child(1){--w:13vw;--h:44%;--bg:#e8d93a}
+.card:nth-child(2){--w:14vw;--h:58%;--bg:#e4443d}
+.card:nth-child(3){--w:15vw;--h:76%;--bg:#b9dfc7}
+.card:nth-child(4){--w:30vw;--h:100%;--bg:#f0a4d5;--z:3;border-radius:30px 30px 0 0}
+.card:nth-child(5){--w:15vw;--h:76%;--bg:#5e7fdd}
+.card:nth-child(6){--w:14vw;--h:58%;--bg:#a66bc0}
+.card:nth-child(7){--w:13vw;--h:44%;--bg:#f18e4d}
+
+@media(max-width:700px){
+ .nav{height:70px}
+ h1{letter-spacing:-2px;margin-bottom:26px}
+ .btn{padding:15px 24px;font-size:14px}
+ .showcase{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;height:clamp(300px,46svh,400px)}
+ .showcase::-webkit-scrollbar{display:none}
+ .card:nth-child(n){--w:38vw}
+ .card:nth-child(4){--w:60vw}
+ .card{scroll-snap-align:center;margin-inline:-3px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav"><a class="brand" href="index.html" aria-label="Pischa home"><span class="mark"></span>Pischa</a></header>
+<main class="hero">
+  <div class="copy">
+    <h1>Everything you need.<span>Found in seconds.</span></h1>
+    <div class="actions">
+      <a class="btn dark" href="shop.html">Find product</a>
+      <a class="btn" href="learn.html">Learn from Pischa</a>
+    </div>
+  </div>
+  <nav class="showcase" id="showcase" aria-label="Shop by category">
+    <a class="card" href="shop.html#gadgets"><img data-fallback src="https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Black smartwatch" loading="lazy"><span>Gadgets</span></a>
+    <a class="card" href="shop.html#shoes"><img data-fallback src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85" alt="Red sneakers" loading="lazy"><span>Shoes</span></a>
+    <a class="card" href="shop.html#cardigans"><img data-fallback src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=85" alt="Knit cardigan" loading="lazy"><span>Cardigans</span></a>
+    <a class="card" href="shop.html#dresses"><img data-fallback src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85" alt="Dress" loading="lazy"><span>Dresses</span></a>
+    <a class="card" href="shop.html#electronics"><img data-fallback src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85" alt="Headphones" loading="lazy"><span>Electronics</span></a>
+    <a class="card" href="shop.html#handbags"><img data-fallback src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=85" alt="Handbag" loading="lazy"><span>Handbags</span></a>
+    <a class="card" href="shop.html#watches"><img data-fallback src="https://images.pexels.com/photos/440320/pexels-photo-440320.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Wristwatch" loading="lazy"><span>Watches</span></a>
+  </nav>
+</main>
+<script>
+document.querySelectorAll("img[data-fallback]").forEach(i=>i.addEventListener("error",()=>{i.style.display="none"}));
+// On phones, start the row centred on the tallest card
+const s=document.getElementById("showcase"),c=s.children[3];
+if(matchMedia("(max-width:700px)").matches){s.scrollLeft=c.offsetLeft-(s.clientWidth-c.offsetWidth)/2}
+</script>
+</body>
+</html>

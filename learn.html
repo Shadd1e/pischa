@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn importation | Pischa</title>
+<meta name="description" content="Learn how to import products into Nigeria, from finding suppliers to clearing goods and selling.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='5' y='5' width='22' height='22' rx='8' fill='%23090909'/><circle cx='25' cy='25' r='6' fill='%23f0a4d5'/></svg>">
+<link rel="stylesheet" href="style.css">
+<style>
+.bar{background:#000;color:#fff;text-align:center;padding:10px 16px;font:600 13px system-ui;letter-spacing:.04em}
+.bar b{color:var(--pink)}
+.lhero{padding:64px 0 30px;text-align:center}
+.lhero h1{font:800 clamp(38px,6.4vw,84px)/1.02 system-ui,sans-serif;letter-spacing:-.045em;max-width:15ch;margin:0 auto 20px}
+.lhero h1 em{font:italic 400 1em Georgia,serif;letter-spacing:-.03em}
+.lhero .lead{margin:0 auto 30px;text-align:center}
+.bigvideo{margin:44px auto 0;max-width:960px}
+.bigvideo .video{aspect-ratio:16/9;border-radius:28px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:960px;margin:22px auto 0}
+.stats div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}
+.stats b{display:block;font:800 clamp(26px,4vw,40px) system-ui;letter-spacing:-.03em}
+.stats span{font-size:13px;color:var(--muted)}
+.sech{text-align:center;max-width:20ch;margin:0 auto 14px;font:800 clamp(30px,4.6vw,56px)/1.05 system-ui;letter-spacing:-.04em}
+.sub{text-align:center;color:var(--muted);max-width:52ch;margin:0 auto 40px;font-size:18px}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pain{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;font:italic 400 22px/1.3 Georgia,serif}
+.pain small{display:block;margin-top:14px;font:600 13px system-ui;color:var(--muted);font-style:normal}
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mod{background:#0c0c0c;color:#fff;border-radius:24px;padding:28px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+.mod:nth-child(3n+2){background:var(--pink);color:#000}
+.mod:nth-child(3n){background:#fbb915;color:#000}
+.mod i{font:normal 400 40px Georgia,serif;opacity:.6}
+.mod h3{font:700 22px system-ui;letter-spacing:-.02em;margin-bottom:6px}
+.mod p{margin:0;opacity:.8;font-size:15px}
+.who{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.who .photo{aspect-ratio:4/5;border-radius:28px;background:#e0ddd8;overflow:hidden;position:relative;display:grid;place-items:center;color:var(--muted);font:600 13px system-ui}
+.who .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.test{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}
+.test p{margin:0 0 18px}
+.test b{display:block;font:700 15px system-ui}
+.test span{font-size:13px;color:var(--muted)}
+.offer{background:#000;color:#fff;border-radius:32px;padding:clamp(28px,5vw,56px);text-align:center;margin-inline:12px}
+.offer .was{text-decoration:line-through;color:#8d8a86;font:400 26px Georgia,serif}
+.offer .now{font:800 clamp(52px,9vw,100px)/1 system-ui;letter-spacing:-.05em;margin:4px 0 22px}
+.offer ul{list-style:none;padding:0;margin:0 auto 30px;max-width:420px;text-align:left;display:grid;gap:10px;color:#d6d3cf}
+.offer li:before{content:"✓";color:var(--pink);margin-right:10px;font-weight:700}
+.offer .btn{background:#fff;color:#000;border-color:#fff}
+@media(max-width:860px){.pains,.mods,.tests,.who{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.who{gap:28px}}
+</style>
+</head>
+<body>
+<!-- Set COHORT_DATE in the script at the bottom (e.g. "2026-12-01") to show a real countdown. Leave empty to hide it. -->
+<div class="bar" id="bar">Enrolment is open · <b>Join the next class</b></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="mark"></span>Pischa</a>
+  <ul>
+    <li><a href="#inside">What's inside</a></li>
+    <li><a href="#about">About Pischa</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="shop.html">Shop</a></li>
+  </ul>
+  <a class="btn dark sm" href="#enrol">Enrol</a>
+</div></header>
+
+<main>
+<section class="lhero"><div class="wrap">
+  <p class="eyebrow">The importation course</p>
+  <h1>Learn to import <em>properly,</em> from someone who does it.</h1>
+  <p class="lead">Step-by-step training on bringing products into Nigeria: where to buy, how to ship, how to clear and how to sell at a profit.</p>
+  <div class="actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn dark" href="#enrol">Join the course</a>
+    <a class="btn" href="#inside">See what's inside</a>
+  </div>
+  <div class="bigvideo reveal">
+    <!-- Replace with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> or a <video> tag -->
+    <div class="video"><div class="ph"><div class="play"></div><span class="tag">Placeholder</span><p><small>Pischa's welcome video goes here</small></p></div></div>
+    <div class="stats">
+      <div><b>000+</b><span>orders delivered · placeholder</span></div>
+      <div><b>00</b><span>students taught · placeholder</span></div>
+      <div><b>0 yrs</b><span>importing · placeholder</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="sech">Sound familiar?</h2>
+  <p class="sub">The questions most beginners are stuck on. Replace these with the real ones your students ask.</p>
+  <div class="pains">
+    <div class="pain reveal">"I want to import, but I don't know where to start."<small>Placeholder</small></div>
+    <div class="pain reveal">"I'm scared of paying a supplier and never receiving my goods."<small>Placeholder</small></div>
+    <div class="pain reveal">"Customs and clearing look too complicated."<small>Placeholder</small></div>
+  </div>
+</div></section>
+
+<section id="inside" style="padding-top:20px"><div class="wrap">
+  <h2 class="sech">What's inside</h2>
+  <p class="sub">Six modules, from choosing a product to selling it. Edit titles and descriptions to match the real course.</p>
+  <div class="mods">
+    <div class="mod reveal"><i>01</i><div><h3>Choosing what to import</h3><p>Find products that sell and test demand before spending.</p></div></div>
+    <div class="mod reveal"><i>02</i><div><h3>Finding suppliers</h3><p>Where to source, how to verify sellers and avoid scams.</p></div></div>
+    <div class="mod reveal"><i>03</i><div><h3>Shipping and freight</h3><p>Air or sea, forwarders, and what each costs.</p></div></div>
+    <div class="mod reveal"><i>04</i><div><h3>Customs and clearing</h3><p>Duties, documents and getting goods released.</p></div></div>
+    <div class="mod reveal"><i>05</i><div><h3>Pricing</h3><p>Work out landing cost and a margin that holds.</p></div></div>
+    <div class="mod reveal"><i>06</i><div><h3>Selling</h3><p>Get your first customers and repeat orders.</p></div></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap who">
+  <div class="photo reveal"><img data-fallback alt="Pischa" src="images/pischa.jpg"><span>Photo of Pischa</span></div>
+  <div class="reveal">
+    <p class="eyebrow">About Pischa</p>
+    <h2>Taught by the person who does it daily.</h2>
+    <p class="lead">[Placeholder] Her story: how she started importing, what she has shipped and the mistakes she learned from. Write it in her own words.</p>
+    <p class="lead">[Placeholder] She also runs the shop and import service, so everything taught comes from live orders.</p>
+    <p><a class="btn" href="shop.html">Visit the shop</a></p>
+  </div>
+</div></section>
+
+<section id="results" style="padding-top:20px"><div class="wrap">
+  <h2 class="sech">What students say</h2>
+  <p class="sub">Use real screenshots and results only. Delete this section if there are none yet.</p>
+  <div class="tests">
+    <div class="test reveal"><p>[Placeholder testimonial]</p><b>Student name</b><span>@handle · result</span></div>
+    <div class="test reveal"><p>[Placeholder testimonial]</p><b>Student name</b><span>@handle · result</span></div>
+    <div class="test reveal"><p>[Placeholder testimonial]</p><b>Student name</b><span>@handle · result</span></div>
+  </div>
+</div></section>
+
+<section id="enrol"><div class="offer reveal">
+  <p class="eyebrow" style="color:#b7b4b0">Enrol</p>
+  <div class="was">₦000,000</div>
+  <div class="now">₦000,000</div>
+  <ul>
+    <li>[Placeholder] Format: live classes or recorded</li>
+    <li>[Placeholder] Duration</li>
+    <li>[Placeholder] Community or WhatsApp support</li>
+  </ul>
+  <a class="btn" data-wa="Hi Pischa, I want to enrol in the importation course.">Enrol on WhatsApp</a>
+  <p style="margin:18px 0 0;font-size:13px;color:#8d8a86">Placeholder prices. Remove the crossed-out price unless there is a real discount.</p>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <h2 class="sech">Questions</h2>
+  <div style="max-width:760px;margin:30px auto 0">
+  <details><summary>Do I need experience?</summary><p>[Placeholder] No. The course starts from the basics.</p></details>
+  <details><summary>How much money do I need to start?</summary><p>[Placeholder] Depends on what you import. The course shows how to start small.</p></details>
+  <details><summary>Is there support after the course?</summary><p>[Placeholder] Describe the community or follow-up support.</p></details>
+  <details><summary>Can I get a refund?</summary><p>[Placeholder] State the refund policy.</p></details>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="routes"><a class="route" href="shop.html"><h3>Just want to buy? →</h3><p>In-stock items and import requests.</p></a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© <span id="y"></span> Pischalifestyle</span>
+  <span><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="learn.html">Learn</a><a data-ig>Instagram</a><a data-wa="Hi Pischa">WhatsApp</a></span>
+</div></footer>
+<script src="script.js"></script>
+<script>
+document.getElementById("y").textContent=new Date().getFullYear();
+// Countdown: set a real date to show it, leave "" to keep "Enrolment is open".
+const COHORT_DATE="";
+if(COHORT_DATE){
+  const bar=document.getElementById("bar"),end=new Date(COHORT_DATE+"T00:00:00").getTime();
+  const tick=()=>{const d=end-Date.now();if(d<=0){bar.innerHTML="Class has started · <b>Join the next one</b>";return}
+    const day=Math.floor(d/864e5),h=Math.floor(d/36e5)%24,m=Math.floor(d/6e4)%60;
+    bar.innerHTML="Next class starts in <b>"+day+"d "+h+"h "+m+"m</b>"};
+  tick();setInterval(tick,6e4);
+}
+</script>
+</body>
+</html>
