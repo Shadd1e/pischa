@@ -28,15 +28,19 @@ h1 span{display:block}
 .btn.dark{background:#000;color:#fff;border-color:#000}
 
 /* ===== Carousel ===== */
-.showcase{position:relative;margin-top:auto;height:clamp(330px,52vh,480px);touch-action:pan-y}
-.card{position:absolute;bottom:0;left:50%;width:var(--w);height:var(--h);
-  transform:translateX(calc(-50% + var(--x))) rotate(0deg);
-  border-radius:26px 26px 0 0;overflow:hidden;background:var(--bg);text-decoration:none;color:#000;isolation:isolate;
-  transition:transform .9s cubic-bezier(.22,1,.36,1),width .9s cubic-bezier(.22,1,.36,1),height .9s cubic-bezier(.22,1,.36,1)}
-.card.on{border-radius:30px 30px 0 0}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-.card span{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:999px;padding:7px 13px;font:600 13px system-ui,sans-serif;opacity:0;transition:opacity .5s}
-.card.on span{opacity:1}
+.showcase{--cw:clamp(230px,23vw,360px);--g:14px;position:relative;margin-top:auto;height:clamp(320px,48vh,470px);touch-action:pan-y;padding-bottom:26px}
+.card{position:absolute;bottom:26px;left:50%;width:var(--cw);height:calc(100% - 26px);
+  transform-origin:50% 100%;
+  transform:translateX(calc(-50% + var(--x))) scale(var(--s)) rotate(var(--r,0deg));
+  border-radius:28px;overflow:hidden;background:var(--bg);text-decoration:none;color:#000;isolation:isolate;
+  box-shadow:0 18px 40px -18px #0006;cursor:pointer;
+  transition:transform .85s cubic-bezier(.22,1,.36,1),box-shadow .85s,filter .85s}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.card.on img{transform:scale(1.04)}
+.card span{position:absolute;left:14px;bottom:14px;background:#fff;border-radius:999px;padding:8px 15px;font:600 14px system-ui,sans-serif;opacity:0;transform:translateY(8px);transition:opacity .5s .15s,transform .5s .15s}
+.card.on span{opacity:1;transform:none}
+.card:not(.on){filter:saturate(.8) brightness(.96)}
+.card.on{box-shadow:0 30px 60px -20px #0008}
 .card:nth-child(1){--bg:#e8d93a}
 .card:nth-child(2){--bg:#e4443d}
 .card:nth-child(3){--bg:#b9dfc7}
@@ -45,36 +49,30 @@ h1 span{display:block}
 .card:nth-child(6){--bg:#a66bc0}
 .card:nth-child(7){--bg:#f18e4d}
 
-.card[data-off="0"]{--w:30vw;--h:100%;--x:0vw}
-.card[data-off="1"]{--w:15vw;--h:76%;--x:22.5vw}
-.card[data-off="-1"]{--w:15vw;--h:76%;--x:-22.5vw}
-.card[data-off="2"]{--w:14vw;--h:58%;--x:37vw}
-.card[data-off="-2"]{--w:14vw;--h:58%;--x:-37vw}
-.card[data-off="3"]{--w:13vw;--h:44%;--x:50.5vw}
-.card[data-off="-3"]{--w:13vw;--h:44%;--x:-50.5vw}
+/* positions: each step out is smaller and tucked a little further away */
+.card[data-off="0"]{--s:1;--x:0px}
+.card[data-off="1"]{--s:.8;--x:calc(var(--cw)*.9 + var(--g))}
+.card[data-off="-1"]{--s:.8;--x:calc(var(--cw)*-.9 - var(--g))}
+.card[data-off="2"]{--s:.64;--x:calc(var(--cw)*1.62 + var(--g)*2)}
+.card[data-off="-2"]{--s:.64;--x:calc(var(--cw)*-1.62 - var(--g)*2)}
+.card[data-off="3"]{--s:.5;--x:calc(var(--cw)*2.19 + var(--g)*3)}
+.card[data-off="-3"]{--s:.5;--x:calc(var(--cw)*-2.19 - var(--g)*3)}
 
-/* Opening state: a loose stack in the middle, then it fans out */
-.showcase.stacked .card{--w:20vw;--h:66%;--x:calc((var(--i) - 3) * 1.4vw);
-  transform:translateX(calc(-50% + var(--x))) rotate(calc((var(--i) - 3) * 3.5deg))}
+/* Opening state: a loose, fanned-out stack in the middle, then it spreads */
+.showcase.stacked .card{--s:.74;--x:calc((var(--i) - 3) * 14px);--r:calc((var(--i) - 3) * 4deg)!important;box-shadow:0 8px 20px -10px #0005}
 .showcase.stacked .card span{opacity:0}
 
 /* a card that wraps from one side to the other must not slide across the screen */
 .card.jump{transition:none}
+.card.jump img{transition:none}
 
 @media(max-width:700px){
  .nav{height:70px}
  h1{letter-spacing:-2px;margin-bottom:26px}
  .btn{padding:15px 24px;font-size:14px}
- .showcase{height:clamp(300px,46svh,410px)}
- .card[data-off="0"]{--w:58vw}
- .card[data-off="1"],.card[data-off="-1"]{--w:32vw;--h:78%}
- .card[data-off="1"]{--x:45vw}.card[data-off="-1"]{--x:-45vw}
- .card[data-off="2"],.card[data-off="-2"]{--w:24vw;--h:60%}
- .card[data-off="2"]{--x:73vw}.card[data-off="-2"]{--x:-73vw}
- .card[data-off="3"]{--w:20vw;--h:46%;--x:96vw}.card[data-off="-3"]{--w:20vw;--h:46%;--x:-96vw}
- .showcase.stacked .card{--w:44vw;--x:calc((var(--i) - 3) * 3vw)}
+ .showcase{--cw:54vw;--g:10px;height:clamp(320px,50svh,430px)}
 }
-@media(prefers-reduced-motion:reduce){.card,.card span{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.card,.card span,.card img{transition:none!important}}
 </style>
 </head>
 <body>
@@ -116,6 +114,7 @@ document.querySelectorAll("img[data-fallback]").forEach(i=>i.addEventListener("e
         c.classList.add("jump"); c.dataset.off=off; void c.offsetWidth; c.classList.remove("jump");
       } else c.dataset.off=off;
       c.style.zIndex=10-Math.abs(off);
+      c.style.setProperty("--r",off===0?"0deg":(off*1.5)+"deg");
       c.classList.toggle("on",off===0);
       c.tabIndex=0;
     });
@@ -132,14 +131,25 @@ document.querySelectorAll("img[data-fallback]").forEach(i=>i.addEventListener("e
     setTimeout(play,2600);
   }
 
-  // hover: pause, and bring the hovered card to the centre
+  // hover: pause, and bring the hovered card to the centre.
+  // A short intent delay + lock stops cards sliding under a still cursor and re-triggering each other.
+  const canHover=matchMedia("(hover:hover)");
+  let intent=null, lockUntil=0;
+  let anchor=null, mx=0, my=0;   // after a hover-move, wait for the mouse to really move before reacting again
+  const goLocked=i=>{ if(i===active) return; go(i); lockUntil=Date.now()+700; anchor={x:mx,y:my}; };
+  box.addEventListener("mousemove",e=>{ mx=e.clientX; my=e.clientY; if(anchor && Math.hypot(mx-anchor.x,my-anchor.y)>10) anchor=null; });
   box.addEventListener("mouseenter",pause);
-  box.addEventListener("mouseleave",play);
+  box.addEventListener("mouseleave",()=>{ clearTimeout(intent); play(); });
   cards.forEach((c,i)=>{
-    c.addEventListener("mouseenter",()=>{ if(matchMedia("(hover:hover)").matches) go(i); });
-    c.addEventListener("focus",()=>{ pause(); go(i); });
-    // touch: first tap centres a side card, tapping the centred card opens it
-    c.addEventListener("click",e=>{ if(!c.classList.contains("on")){ e.preventDefault(); pause(); go(i); } });
+    c.addEventListener("mouseenter",()=>{
+      if(!canHover.matches) return;
+      clearTimeout(intent);
+      intent=setTimeout(()=>{ if(!anchor && Date.now()>=lockUntil && c.matches(":hover")) goLocked(i); },140);
+    });
+    c.addEventListener("mouseleave",()=>clearTimeout(intent));
+    c.addEventListener("focus",()=>{ pause(); goLocked(i); });
+    // click/tap: a side card centres first, tapping the centred card opens it
+    c.addEventListener("click",e=>{ if(!c.classList.contains("on")){ e.preventDefault(); pause(); goLocked(i); } });
   });
 
   // swipe on phones
