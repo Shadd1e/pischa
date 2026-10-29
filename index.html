@@ -27,32 +27,54 @@ h1 span{display:block}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #0001}
 .btn.dark{background:#000;color:#fff;border-color:#000}
 
-/* Showcase: flush cards, tallest in the middle, bleeding off both edges */
-.showcase{margin-top:auto;padding-top:48px;height:clamp(320px,50vh,470px);display:flex;align-items:flex-end;justify-content:center}
-.card{position:relative;flex:none;width:var(--w);height:var(--h);margin-inline:-4px;border-radius:26px 26px 0 0;overflow:hidden;background:var(--bg);text-decoration:none;color:#000;isolation:isolate;z-index:var(--z,1);transition:transform .35s}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .6s}
-.card:hover{transform:translateY(-8px)}
-.card:hover img{transform:scale(1.05)}
-.card span{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:999px;padding:7px 13px;font:600 13px system-ui,sans-serif}
-.card:nth-child(1){--w:13vw;--h:44%;--bg:#e8d93a}
-.card:nth-child(2){--w:14vw;--h:58%;--bg:#e4443d}
-.card:nth-child(3){--w:15vw;--h:76%;--bg:#b9dfc7}
-.card:nth-child(4){--w:30vw;--h:100%;--bg:#f0a4d5;--z:3;border-radius:30px 30px 0 0}
-.card:nth-child(5){--w:15vw;--h:76%;--bg:#5e7fdd}
-.card:nth-child(6){--w:14vw;--h:58%;--bg:#a66bc0}
-.card:nth-child(7){--w:13vw;--h:44%;--bg:#f18e4d}
+/* ===== Carousel ===== */
+.showcase{position:relative;margin-top:auto;height:clamp(330px,52vh,480px);touch-action:pan-y}
+.card{position:absolute;bottom:0;left:50%;width:var(--w);height:var(--h);
+  transform:translateX(calc(-50% + var(--x))) rotate(0deg);
+  border-radius:26px 26px 0 0;overflow:hidden;background:var(--bg);text-decoration:none;color:#000;isolation:isolate;
+  transition:transform .9s cubic-bezier(.22,1,.36,1),width .9s cubic-bezier(.22,1,.36,1),height .9s cubic-bezier(.22,1,.36,1)}
+.card.on{border-radius:30px 30px 0 0}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.card span{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:999px;padding:7px 13px;font:600 13px system-ui,sans-serif;opacity:0;transition:opacity .5s}
+.card.on span{opacity:1}
+.card:nth-child(1){--bg:#e8d93a}
+.card:nth-child(2){--bg:#e4443d}
+.card:nth-child(3){--bg:#b9dfc7}
+.card:nth-child(4){--bg:#f0a4d5}
+.card:nth-child(5){--bg:#5e7fdd}
+.card:nth-child(6){--bg:#a66bc0}
+.card:nth-child(7){--bg:#f18e4d}
+
+.card[data-off="0"]{--w:30vw;--h:100%;--x:0vw}
+.card[data-off="1"]{--w:15vw;--h:76%;--x:22.5vw}
+.card[data-off="-1"]{--w:15vw;--h:76%;--x:-22.5vw}
+.card[data-off="2"]{--w:14vw;--h:58%;--x:37vw}
+.card[data-off="-2"]{--w:14vw;--h:58%;--x:-37vw}
+.card[data-off="3"]{--w:13vw;--h:44%;--x:50.5vw}
+.card[data-off="-3"]{--w:13vw;--h:44%;--x:-50.5vw}
+
+/* Opening state: a loose stack in the middle, then it fans out */
+.showcase.stacked .card{--w:20vw;--h:66%;--x:calc((var(--i) - 3) * 1.4vw);
+  transform:translateX(calc(-50% + var(--x))) rotate(calc((var(--i) - 3) * 3.5deg))}
+.showcase.stacked .card span{opacity:0}
+
+/* a card that wraps from one side to the other must not slide across the screen */
+.card.jump{transition:none}
 
 @media(max-width:700px){
  .nav{height:70px}
  h1{letter-spacing:-2px;margin-bottom:26px}
  .btn{padding:15px 24px;font-size:14px}
- .showcase{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;height:clamp(300px,46svh,400px)}
- .showcase::-webkit-scrollbar{display:none}
- .card:nth-child(n){--w:38vw}
- .card:nth-child(4){--w:60vw}
- .card{scroll-snap-align:center;margin-inline:-3px}
+ .showcase{height:clamp(300px,46svh,410px)}
+ .card[data-off="0"]{--w:58vw}
+ .card[data-off="1"],.card[data-off="-1"]{--w:32vw;--h:78%}
+ .card[data-off="1"]{--x:45vw}.card[data-off="-1"]{--x:-45vw}
+ .card[data-off="2"],.card[data-off="-2"]{--w:24vw;--h:60%}
+ .card[data-off="2"]{--x:73vw}.card[data-off="-2"]{--x:-73vw}
+ .card[data-off="3"]{--w:20vw;--h:46%;--x:96vw}.card[data-off="-3"]{--w:20vw;--h:46%;--x:-96vw}
+ .showcase.stacked .card{--w:44vw;--x:calc((var(--i) - 3) * 3vw)}
 }
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.card,.card span{transition:none!important}}
 </style>
 </head>
 <body>
@@ -65,7 +87,7 @@ h1 span{display:block}
       <a class="btn" href="learn.html">Learn from Pischa</a>
     </div>
   </div>
-  <nav class="showcase" id="showcase" aria-label="Shop by category">
+  <nav class="showcase stacked" id="showcase" aria-label="Shop by category">
     <a class="card" href="shop.html#gadgets"><img data-fallback src="https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Black smartwatch" loading="lazy"><span>Gadgets</span></a>
     <a class="card" href="shop.html#shoes"><img data-fallback src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85" alt="Red sneakers" loading="lazy"><span>Shoes</span></a>
     <a class="card" href="shop.html#cardigans"><img data-fallback src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=85" alt="Knit cardigan" loading="lazy"><span>Cardigans</span></a>
@@ -77,9 +99,61 @@ h1 span{display:block}
 </main>
 <script>
 document.querySelectorAll("img[data-fallback]").forEach(i=>i.addEventListener("error",()=>{i.style.display="none"}));
-// On phones, start the row centred on the tallest card
-const s=document.getElementById("showcase"),c=s.children[3];
-if(matchMedia("(max-width:700px)").matches){s.scrollLeft=c.offsetLeft-(s.clientWidth-c.offsetWidth)/2}
+
+(function(){
+  const box=document.getElementById("showcase");
+  const cards=[...box.children], n=cards.length;
+  const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  let active=3, timer=null;
+
+  cards.forEach((c,i)=>c.style.setProperty("--i",i));
+
+  function layout(){
+    cards.forEach((c,i)=>{
+      let off=((i-active)%n+n)%n; if(off>3) off-=n;       // -3 .. 3
+      const prev=c.dataset.off;
+      if(prev!==undefined && Math.abs(off-Number(prev))>3){ // wrapped round the back: jump, don't slide
+        c.classList.add("jump"); c.dataset.off=off; void c.offsetWidth; c.classList.remove("jump");
+      } else c.dataset.off=off;
+      c.style.zIndex=10-Math.abs(off);
+      c.classList.toggle("on",off===0);
+      c.tabIndex=0;
+    });
+  }
+  function go(i){ active=((i%n)+n)%n; layout(); }
+  function play(){ if(reduce||timer) return; timer=setInterval(()=>go(active+1),3200); }
+  function pause(){ clearInterval(timer); timer=null; }
+
+  layout();
+  if(reduce){ box.classList.remove("stacked"); }
+  else{
+    // fan out from the stack, then start moving on its own
+    setTimeout(()=>box.classList.remove("stacked"),500);
+    setTimeout(play,2600);
+  }
+
+  // hover: pause, and bring the hovered card to the centre
+  box.addEventListener("mouseenter",pause);
+  box.addEventListener("mouseleave",play);
+  cards.forEach((c,i)=>{
+    c.addEventListener("mouseenter",()=>{ if(matchMedia("(hover:hover)").matches) go(i); });
+    c.addEventListener("focus",()=>{ pause(); go(i); });
+    // touch: first tap centres a side card, tapping the centred card opens it
+    c.addEventListener("click",e=>{ if(!c.classList.contains("on")){ e.preventDefault(); pause(); go(i); } });
+  });
+
+  // swipe on phones
+  let sx=null;
+  box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;pause()},{passive:true});
+  box.addEventListener("touchend",e=>{
+    if(sx===null) return;
+    const dx=e.changedTouches[0].clientX-sx; sx=null;
+    if(Math.abs(dx)>40) go(active+(dx<0?1:-1));
+    setTimeout(play,4000);
+  });
+
+  document.addEventListener("visibilitychange",()=>document.hidden?pause():play());
+})();
 </script>
 </body>
 </html>
